@@ -33,7 +33,7 @@ const Navigation = ({ toggleDrawer }) => {
     }, []);
 
     return (
-        <nav className="bg-white dark:bg-gray-900 fixed w-full z-30 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+        <nav className="bg-white dark:bg-gray-700 fixed w-full z-30 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
             <div className="flex flex-wrap items-center justify-between mx-auto p-3 pl-10 pr-10">
                 <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src={logo} className="h-8" alt="Flowbite Logo" />

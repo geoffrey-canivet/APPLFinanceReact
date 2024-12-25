@@ -7,7 +7,7 @@ const MainFinance = () => {
 
     return (
         <>
-            <div className="ml-10 mr-10">
+            <div className="ml-10 mr-10 pt-20 dark:bg-gray-900 min-h-screen">
                 <NavPeriode/>
                 <Accordions/>
             </div>

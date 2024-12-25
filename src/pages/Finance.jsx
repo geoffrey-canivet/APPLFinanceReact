@@ -5,9 +5,12 @@ import MainFinance from "../components/Finance/MainFinance/MainFinance.jsx";
 const Finance = ({ isDrawerOpen, toggleDrawer }) => {
     return (
         <>
-            <Navigation toggleDrawer={toggleDrawer} />
-            <Drawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
-            <MainFinance />
+            <div className="dark:bg-gray-900">
+                <Navigation toggleDrawer={toggleDrawer} />
+                <Drawer isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+                <MainFinance />
+            </div>
+
         </>
     );
 };

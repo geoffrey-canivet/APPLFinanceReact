@@ -10,7 +10,8 @@ function App() {
     };
 
     return (
-        <Finance isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
+
+        <Finance className="dark:bg-gray-900" isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} />
     );
 }
 
