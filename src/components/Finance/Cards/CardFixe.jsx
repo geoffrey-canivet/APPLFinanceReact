@@ -5,7 +5,7 @@ import {
     faTicket,
     faChartBar,
     faPlusCircle,
-    faBars
+    faBars, faEllipsis
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -152,7 +152,7 @@ const CardFixe = () => {
                                             {item.name}
                                         </td>
                                         <td className="px-4 py-2">{item.price}</td>
-                                        <td className="px-4 py-2"><FontAwesomeIcon icon={faBars} /></td>
+                                        <td className="px-4 py-2"><FontAwesomeIcon icon={faEllipsis} /></td>
                                     </tr>
                                 ))}
                                 </tbody>

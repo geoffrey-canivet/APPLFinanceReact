@@ -10,12 +10,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../../assets/logo-small.png";
 
-const Navigation = ({ toggleDrawer }) => {
+const Navigation = ({ toggleDrawer, isDarkMode, onToggleChange  }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null); // Utilisation de useRef pour le dropdown
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleChange = (event) => {
+        const isChecked = event.target.checked;
+        setIsChecked(isChecked);
+        onToggleChange(isChecked); // Passez l'état au parent
     };
 
     // Fermer le dropdown si on clique en dehors
@@ -70,19 +78,24 @@ const Navigation = ({ toggleDrawer }) => {
                     </button>
 
                     {/* Dropdown menu */}
-                    <div
-                        id="dropdownAvatar"
-                        ref={dropdownRef}
-                        className={`z-10 absolute right-0 mt-2 w-44 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
-                            isDropdownOpen ? "block" : "hidden"
-                        }`}
-                    >
+                    <div id="dropdownAvatar" ref={dropdownRef}
+                         className={`z-10 absolute right-0 mt-2 w-44 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-600 ${isDropdownOpen ? "block" : "hidden"}`}>
+                        <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                            <label className="inline-flex items-center  cursor-pointer">
+                                <input type="checkbox" value="" className="sr-only peer" checked={isChecked}
+                                       onChange={handleChange}/>
+                                <div
+                                    className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                <span
+                                    className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Thème</span>
+                            </label>
+                        </div>
+                        <hr className="border-gray-200 dark:border-gray-600"/>
                         <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
                             <div className="font-medium text-xs truncate">
                                 geoffrey.canivet@gmail.com
                             </div>
                         </div>
-                        <hr className="border-gray-200 dark:border-gray-600" />
                         <ul
                             className="py-2 text-sm text-gray-700 dark:text-gray-200"
                             aria-labelledby="dropdownUserAvatarButton"
@@ -92,7 +105,7 @@ const Navigation = ({ toggleDrawer }) => {
                                     href="#"
                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
-                                    <FontAwesomeIcon className="mr-3" icon={faUser} />Profil
+                                <FontAwesomeIcon className="mr-3" icon={faUser}/>Profil
                                 </a>
                             </li>
                             <li>
@@ -100,11 +113,11 @@ const Navigation = ({ toggleDrawer }) => {
                                     href="#"
                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
-                                    <FontAwesomeIcon className="mr-3" icon={faGear} />Réglages
+                                    <FontAwesomeIcon className="mr-3" icon={faGear}/>Réglages
                                 </a>
                             </li>
                         </ul>
-                        <hr className="border-gray-200 dark:border-gray-600" />
+                        <hr className="border-gray-200 dark:border-gray-600"/>
                         <ul
                             className="py-2 text-sm text-gray-700 dark:text-gray-200"
                             aria-labelledby="dropdownUserAvatarButton"
@@ -114,7 +127,7 @@ const Navigation = ({ toggleDrawer }) => {
                                     href="#"
                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
-                                    <FontAwesomeIcon className="mr-3" icon={faCircleExclamation} />Earnings
+                                    <FontAwesomeIcon className="mr-3" icon={faCircleExclamation}/>Earnings
                                 </a>
                             </li>
                             <li>
@@ -122,11 +135,11 @@ const Navigation = ({ toggleDrawer }) => {
                                     href="#"
                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
-                                    <FontAwesomeIcon className="mr-3" icon={faTriangleExclamation} />Earnings
+                                    <FontAwesomeIcon className="mr-3" icon={faTriangleExclamation}/>Earnings
                                 </a>
                             </li>
                         </ul>
-                        <hr className="border-gray-200 dark:border-gray-600" />
+                        <hr className="border-gray-200 dark:border-gray-600"/>
                         <div className="py-2">
                             <a
                                 href="#"
@@ -140,6 +153,7 @@ const Navigation = ({ toggleDrawer }) => {
                             </a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </nav>
